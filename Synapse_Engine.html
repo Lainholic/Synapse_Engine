@@ -1268,6 +1268,11 @@ html, body {
               <div class="memory-notes-list" id="memoryNotesList">
                 <div class="empty-note-hint">등록된 장기 기억이 없습니다.</div>
               </div>
+              <div class="btn-grid-dual" style="margin-top: 8px;">
+                <button type="button" class="btn-mini" id="btnExportMemoryNotes" title="현재 캐릭터의 장기 기억 목록을 JSON 파일로 백업/저장">기억 파일 저장</button>
+                <button type="button" class="btn-mini" id="btnImportMemoryNotes" title="저장해둔 장기 기억 JSON 파일 불러오기">기억 파일 불러오기</button>
+                <input type="file" id="memoryNotesFileInput" accept=".json" style="display: none;">
+              </div>
             </div>
           </div>
         </section>
@@ -2881,6 +2886,15 @@ ${fullConversation}
       btnAddMemory: '기억 추가',
       memoryListLabel: '보존 중인 핵심 기억 목록:',
       btnClearAllMemory: '전체 비우기',
+      btnExportMemory: '기억 파일 저장',
+      btnImportMemory: '기억 파일 불러오기',
+      msgMemoryExported: '장기 기억을 파일로 내보냈습니다.',
+      msgMemoryImported: '{count}개의 장기 기억을 성공적으로 불러왔습니다.',
+      emptyMemoryToExport: '내보낼 장기 기억이 없습니다.',
+      emptyMemoryImportFile: '파일에 등록된 장기 기억이 없습니다.',
+      confirmReplaceMemory: '기존 장기 기억을 덮어쓰시겠습니까?\n[확인]: 전체 교체\n[취소]: 기존 기억 뒤에 추가 병합',
+      errInvalidMemoryBackup: '유효한 장기 기억 백업 파일이 아닙니다.',
+      errMemoryLoadFailed: '기억 불러오기 실패: {err}',
       emptyMemoryHint: '등록된 장기 기억이 없습니다.',
       charSettingsTitle: '캐릭터 설정',
       charPersonaLabel: '캐릭터 성격 / 프로필',
@@ -3021,6 +3035,15 @@ ${fullConversation}
       btnAddMemory: 'Add Memory',
       memoryListLabel: 'Saved Key Memories:',
       btnClearAllMemory: 'Clear All',
+      btnExportMemory: 'Export Memory',
+      btnImportMemory: 'Import Memory',
+      msgMemoryExported: 'Long-term memory exported to JSON.',
+      msgMemoryImported: '{count} long-term memories imported successfully.',
+      emptyMemoryToExport: 'No memories to export.',
+      emptyMemoryImportFile: 'No memory data found in file.',
+      confirmReplaceMemory: 'Replace existing memories?\n[OK]: Replace All\n[Cancel]: Append & Merge',
+      errInvalidMemoryBackup: 'Invalid memory backup file format.',
+      errMemoryLoadFailed: 'Memory import failed: {err}',
       emptyMemoryHint: 'No long-term memories registered.',
       charSettingsTitle: 'Character Settings',
       charPersonaLabel: 'Character Profile & Persona',
@@ -3161,6 +3184,15 @@ ${fullConversation}
       btnAddMemory: '記憶を追加',
       memoryListLabel: '保存された重要記憶一覧:',
       btnClearAllMemory: '全消去',
+      btnExportMemory: '記憶ファイル保存',
+      btnImportMemory: '記憶ファイル読込',
+      msgMemoryExported: '長期記憶をファイルに出力しました。',
+      msgMemoryImported: '{count}件の長期記憶を正常に読み込みました。',
+      emptyMemoryToExport: '出力する記憶がありません。',
+      emptyMemoryImportFile: 'ファイル内に記憶データがありません。',
+      confirmReplaceMemory: '既存の長期記憶を上書きしますか？\n[OK]: 全て置換\n[キャンセル]: 既存記憶に追加統合',
+      errInvalidMemoryBackup: '有効な長期記憶ファイルではありません。',
+      errMemoryLoadFailed: '記憶読込失敗: {err}',
       emptyMemoryHint: '登録された長期記憶はありません。',
       charSettingsTitle: 'キャラクター設定',
       charPersonaLabel: 'プロフィール・性格',
@@ -3301,6 +3333,15 @@ ${fullConversation}
       btnAddMemory: '添加记忆',
       memoryListLabel: '保存的关键记忆列表:',
       btnClearAllMemory: '全部清空',
+      btnExportMemory: '导出记忆文件',
+      btnImportMemory: '导入记忆文件',
+      msgMemoryExported: '长期记忆已导出为文件。',
+      msgMemoryImported: '已成功导入 {count} 条长期记忆。',
+      emptyMemoryToExport: '没有可导出的记忆。',
+      emptyMemoryImportFile: '文件中未找到记忆数据。',
+      confirmReplaceMemory: '是否覆盖现有的长期记忆？\n[确定]: 全部替换\n[取消]: 合并追加',
+      errInvalidMemoryBackup: '无效的长期记忆备份文件格式。',
+      errMemoryLoadFailed: '记忆导入失败: {err}',
       emptyMemoryHint: '暂无长期记忆。',
       charSettingsTitle: '角色设定',
       charPersonaLabel: '角色性格与资料',
@@ -3495,6 +3536,10 @@ ${fullConversation}
       // 1. Long-Term Memory Notes Elements (신규)
       this.inputNewMemory = document.getElementById('inputNewMemory');
       this.btnAddMemoryNote = document.getElementById('btnAddMemoryNote');
+      this.btnClearAllMemoryNotes = document.getElementById('btnClearAllMemoryNotes');
+      this.btnExportMemoryNotes = document.getElementById('btnExportMemoryNotes');
+      this.btnImportMemoryNotes = document.getElementById('btnImportMemoryNotes');
+      this.memoryNotesFileInput = document.getElementById('memoryNotesFileInput');
       this.memoryNotesList = document.getElementById('memoryNotesList');
 
       // 2. User Persona Elements
@@ -3657,13 +3702,31 @@ ${fullConversation}
       // Clear All Long-Term Memory Notes for current character
       if (this.btnClearAllMemoryNotes) {
         this.btnClearAllMemoryNotes.addEventListener('click', () => {
-          if (confirm(this.t('confirmClearAllMemory', { name: this.engine.getActiveCharacter().name }))) {
-            this.engine.memoryNotes = [];
-            this.engine.saveSettings();
+          const char = this.engine.getActiveCharacter();
+          const charName = char ? char.name : '';
+          if (confirm(this.t('confirmClearAllMemory', { name: charName }))) {
+            if (typeof this.engine.clearAllMemoryNotes === 'function') {
+              this.engine.clearAllMemoryNotes();
+            } else {
+              this.engine.memoryNotes = [];
+              this.engine.saveSettings();
+            }
             this.renderMemoryNotesList();
+            if (typeof this.updateMemoryInfoText === 'function') {
+              this.updateMemoryInfoText();
+            }
             this.showToast(this.t('msgAllMemoryCleared'));
           }
         });
+      }
+
+      // Export / Import Long-Term Memory Notes
+      if (this.btnExportMemoryNotes) {
+        this.btnExportMemoryNotes.addEventListener('click', () => this.exportMemoryNotesAsJson());
+      }
+      if (this.btnImportMemoryNotes && this.memoryNotesFileInput) {
+        this.btnImportMemoryNotes.addEventListener('click', () => this.memoryNotesFileInput.click());
+        this.memoryNotesFileInput.addEventListener('change', (e) => this.importMemoryNotesFromJson(e));
       }
 
       // Memory & Backup Actions
@@ -4539,6 +4602,8 @@ ${fullConversation}
       setT('btnImportPersonas', d.btnImportPersonas);
       setT('btnAddMemoryNote', d.btnAddMemory);
       setT('btnClearAllMemoryNotes', d.btnClearAllMemory);
+      setT('btnExportMemoryNotes', d.btnExportMemory);
+      setT('btnImportMemoryNotes', d.btnImportMemory);
       setT('btnSaveCharSettings', d.btnSaveCharSettings);
       setT('labelCharPersona', d.charPersonaLabel);
       setT('labelCharScenario', d.charScenarioLabel);
@@ -4668,6 +4733,84 @@ ${fullConversation}
       if (this.selectNarrativeStyle) this.selectNarrativeStyle.value = this.engine.narrativeStyle || 'balanced';
       if (this.inputTemperature) this.inputTemperature.value = this.engine.temperature || 0.85;
       if (this.tempValDisplay) this.tempValDisplay.textContent = (this.engine.temperature || 0.85).toFixed(2);
+    }
+
+    exportMemoryNotesAsJson() {
+      const char = this.engine.getActiveCharacter();
+      const notes = this.engine.memoryNotes || [];
+      if (notes.length === 0) {
+        alert(this.t('emptyMemoryToExport'));
+        return;
+      }
+      const data = {
+        version: 'TouchRP_MemoryNotes_v1',
+        exportDate: new Date().toISOString(),
+        characterId: this.engine.activeCharId,
+        characterName: char ? char.name : '',
+        memoryNotes: notes
+      };
+      const jsonStr = JSON.stringify(data, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const safeName = (char ? char.name : 'character').replace(/[^a-zA-Z0-9가-힣_-]/g, '_');
+      a.href = url;
+      a.download = `memory_${safeName}_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      this.showToast(this.t('msgMemoryExported'));
+    }
+
+    async importMemoryNotesFromJson(e) {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        let importedNotes = [];
+        if (data && Array.isArray(data.memoryNotes)) {
+          importedNotes = data.memoryNotes;
+        } else if (data && Array.isArray(data.notes)) {
+          importedNotes = data.notes;
+        } else if (Array.isArray(data)) {
+          importedNotes = data;
+        } else {
+          throw new Error(this.t('errInvalidMemoryBackup'));
+        }
+
+        if (importedNotes.length === 0) {
+          alert(this.t('emptyMemoryImportFile'));
+          return;
+        }
+
+        let shouldReplace = true;
+        if (this.engine.memoryNotes && this.engine.memoryNotes.length > 0) {
+          shouldReplace = confirm(this.t('confirmReplaceMemory'));
+        }
+
+        const formatted = importedNotes.map(n => ({
+          id: n.id || ('mem_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5)),
+          text: typeof n === 'string' ? n : (n.text || ''),
+          createdAt: n.createdAt || new Date().toISOString()
+        })).filter(n => n.text && n.text.trim().length > 0);
+
+        if (shouldReplace) {
+          this.engine.memoryNotes = formatted;
+        } else {
+          this.engine.memoryNotes = (this.engine.memoryNotes || []).concat(formatted);
+        }
+
+        this.engine.saveSettings();
+        this.renderMemoryNotesList();
+        if (typeof this.updateMemoryInfoText === 'function') {
+          this.updateMemoryInfoText();
+        }
+        this.showToast(this.t('msgMemoryImported', { count: formatted.length }));
+      } catch (err) {
+        alert(this.t('errMemoryLoadFailed', { err: err.message }));
+      } finally {
+        e.target.value = '';
+      }
     }
 
     exportUserPersonasJson() {
