@@ -298,12 +298,26 @@
     // 3. AI 대화 요약 (수동 및 백그라운드 롤링 자동 요약)
     // ============================================================================
     async summarizeHistory(isAuto = false) {
+      const lang = this.outputLanguage || 'ko';
+      const errEmpty = {
+        ko: '요약할 대화 기록이 충분하지 않습니다 (최소 4턴 이상 권장).',
+        en: 'Not enough conversation history to summarize (at least 4 turns required).',
+        ja: '要約するための会話ログが不足しています (最低4ターン以上推奨)。',
+        zh: '对话记录不足以生成摘要 (建议至少进行4轮对话)。'
+      };
+      const errKey = {
+        ko: 'API 키를 먼저 입력해 주세요.',
+        en: 'Please enter your API Key first.',
+        ja: '先にAPIキーを入力してください。',
+        zh: '请先输入您的 API Key。'
+      };
+
       if (this.chatHistory.length < 4) {
-        if (!isAuto) throw new Error('요약할 대화 기록이 충분하지 않습니다 (최소 4턴 이상 권장).');
+        if (!isAuto) throw new Error(errEmpty[lang] || errEmpty.en);
         return '';
       }
       if (!this.apiKey) {
-        if (!isAuto) throw new Error('API 키를 먼저 입력해 주세요.');
+        if (!isAuto) throw new Error(errKey[lang] || errKey.en);
         return '';
       }
 
@@ -312,18 +326,27 @@
       const sliceTurns = isAuto ? this.chatHistory.slice(-20) : this.chatHistory;
       sliceTurns.forEach(m => {
         const sender = m.role === 'assistant' ? this.getActiveCharacter().name : this.userName;
-        fullConversation += `${sender}: ${m.content}\n\n`;
+        fullConversation += `${sender}: ${m.content}
+
+`;
       });
 
+      const promptGuides = {
+        ko: '지금까지의 핵심 사건, 인물 간의 관계 변화, 중요한 약속, 감정선 등을 3~5줄 내외의 압축된 요약본으로 작성하세요. 반드시 한국어로 작성하세요.',
+        en: 'Summarize the key events, relationship dynamics, emotional developments, and important promises in 3 to 5 concise lines. Write the summary strictly in natural English.',
+        ja: 'これまでの重要な出来事、関係性の変化、感情の機微、約束などを3〜5行程度の簡潔な要約として記述してください。必ず自然な日本語で記述してください。',
+        zh: '请将迄今为止的核心事件、人物关系转变、重要约定及情感脉络总结为3至5行精炼的摘要。请务必使用流畅的中文进行撰写。'
+      };
+
       const summaryPrompt = `[SYSTEM TASK: CONVERSATION SUMMARY]
-아래는 '${this.userName}'와 캐릭터 '${this.getActiveCharacter().name}'가 나눈 롤플레이 대화 기록입니다.
+Below is the roleplay conversation transcript between '${this.userName}' and '${this.getActiveCharacter().name}'.
 
-=== 대화 기록 ===
+=== CONVERSATION LOG ===
 ${fullConversation}
-=================
+========================
 
-[지침]
-지금까지의 핵심 사건, 인물 간의 관계 변화, 중요한 약속, 감정선 등을 3~5줄 내외의 압축된 요약본으로 작성하세요. 반드시 한국어로 작성하세요.`;
+[INSTRUCTIONS]
+${promptGuides[lang] || promptGuides.en}`;
 
       let summaryText = '';
       try {
@@ -334,8 +357,16 @@ ${fullConversation}
         return '';
       }
 
+      const prefixes = {
+        ko: { auto: '[자동 롤링 요약 (최근 대화)]: ', manual: '[대화 요약]: ' },
+        en: { auto: '[Rolling Auto-Summary]: ', manual: '[Story Arc Summary]: ' },
+        ja: { auto: '[自動ローリング要約]: ', manual: '[ストーリー要約]: ' },
+        zh: { auto: '[自动滚动摘要]: ', manual: '[故事梗概]: ' }
+      };
+      const curPrefix = prefixes[lang] || prefixes.en;
+
       if (summaryText && summaryText.trim()) {
-        const prefix = isAuto ? `[자동 롤링 요약 (최근 대화)]: ` : `[대화 요약]: `;
+        const prefix = isAuto ? curPrefix.auto : curPrefix.manual;
         this.addMemoryNote(`${prefix}${summaryText.trim()}`);
         this.lastSummaryTurn = this.chatHistory.length;
       }

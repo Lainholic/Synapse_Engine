@@ -118,8 +118,8 @@
           <div class="accordion-content" id="longTermMemoryContent">
             <!-- 기억 저장 위치 안내 가이드 -->
             <div class="memory-guide-box">
-              <span class="guide-title">저장 안내:</span>
-              <p class="guide-desc">장기 기억은 외부 서버가 아닌 <strong>이 기기의 브라우저 내부(localStorage)</strong>에 안전하게 보관됩니다. 아래에서 개별 삭제하거나 전체 삭제로 언제든 깔끔하게 정리할 수 있습니다.</p>
+              <span class="guide-title" id="memoryGuideTitle">저장 안내:</span>
+              <p class="guide-desc" id="memoryGuideDesc">장기 기억은 외부 서버가 아닌 <strong>이 기기의 브라우저 내부(localStorage)</strong>에 안전하게 보관됩니다. 아래에서 개별 삭제하거나 전체 삭제로 언제든 깔끔하게 정리할 수 있습니다.</p>
             </div>
 
             <div class="memory-input-group">
@@ -132,7 +132,7 @@
 
             <div class="memory-notes-container">
               <div class="label-with-val">
-                <span class="sub-label">보존 중인 핵심 기억 목록:</span>
+                <span class="sub-label" id="labelSavedMemories">보존 중인 핵심 기억 목록:</span>
                 <button type="button" class="btn-text-danger" id="btnClearAllMemoryNotes" title="등록된 모든 장기 기억 한번에 삭제">전체 비우기</button>
               </div>
               <div class="memory-notes-list" id="memoryNotesList">
@@ -189,7 +189,7 @@
 
             <!-- API Key 저장 위치 및 유실 방지 안내 팁 -->
             <div class="api-guide-box" id="apiKeyGuideBox">
-              <span class="guide-title">🔒 보안 및 저장 안내:</span>
+              <span class="guide-title" id="apiKeyGuideTitle">🔒 보안 및 저장 안내:</span>
               <p class="guide-desc" id="apiKeyGuideDesc">입력하신 API Key는 외부 서버로 전송되지 않고 <strong>이 기기의 브라우저 내부(IndexedDB)</strong>에 안전하게 보관됩니다. 브라우저 캐시 삭제 시 초기화될 수 있으니 키를 별도로 잘 보관해 두세요.</p>
             </div>
 
@@ -246,7 +246,7 @@
               </div>
               <div style="display: flex; gap: 8px; align-items: center;">
                 <input type="number" id="inputNaiTurnInterval" class="form-input" min="1" max="50" value="5" style="width: 80px; text-align: center; font-weight: bold; color: var(--accent-cyan);">
-                <span style="font-size: 0.85rem; color: var(--text-main);">턴 대화마다 자동 생성</span>
+                <span id="naiTurnSuffixText" style="font-size: 0.85rem; color: var(--text-main);">턴 대화마다 자동 생성</span>
               </div>
             </div>
 

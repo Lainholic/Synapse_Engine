@@ -1,5 +1,34 @@
   const I18N_DICT = {
     ko: {
+      phCharPersona: '캐릭터의 성격, 말투, 특징 등을 입력하세요',
+      phCharScenario: '상황, 장소, 시간적 배경 등을 입력하세요',
+      titleSummarizeChat: '지금까지 나눈 대화를 AI가 자동으로 3줄 압축하여 장기 기억에 등록',
+      titleTriggerNaiArt: '현재 장면의 NAI 일러스트 삽화 생성',
+      apiKeyGuideTitleFull: '🔒 보안 및 저장 안내:',
+      apiKeyGuideTitle: '보안 안내:',
+      btnSummarizeChat: '✨ 대화 AI 자동요약',
+      btnTriggerNaiArt: '🎨 삽화',
+      phUserName: '내 이름 또는 호칭',
+      phUserPersona: '당신의 성격, 외형, 말투, 캐릭터와의 관계 등을 자유롭게 설정하세요',
+      phCustomPrompt: '예: 반드시 현대 한국 구어체로 답해줘. 은밀한 속마음은 <thought> 태그로 작성해줘.',
+      phApiKey: 'API Key를 입력하세요',
+      phCustomBaseUrl: 'https://api.openai.com/v1',
+      phCustomModel: '모델명 직접 입력',
+      phNaiApiKey: 'NovelAI API Key 입력',
+      m_gemini_flash_lite: 'Gemini 3.1 Flash-Lite (디폴트 / 무료 초고속)',
+      m_gemini_flash_next: 'Gemini 3.5 Flash-Lite (차세대 플래시)',
+      m_gemini_flash_latest: 'Gemini 3.8 Flash (최신 플래그십)',
+      m_claude_sonnet: 'Claude 3.5 Sonnet (최신 플래그십)',
+      m_claude_haiku: 'Claude 3.5 Haiku (초경량 초고속)',
+      m_deepseek_r1: 'DeepSeek R1 (추론형)',
+      m_deepseek_v3: 'DeepSeek V3',
+      m_gemini_25_flash: 'Gemini 2.5 Flash',
+      m_llama_33_70b: 'Llama 3.3 70B',
+      m_nai_v5_full: 'NovelAI Diffusion V5 Full (최신 최상위 플래그십)',
+      m_nai_v5_curated: 'NovelAI Diffusion V5 Curated (V5 정제형)',
+      m_nai_v4_full: 'NovelAI Diffusion V4.5 / V4 Full',
+      m_nai_v4_curated: 'NovelAI Diffusion V4.5 / V4 Curated',
+      m_nai_v3: 'NovelAI Diffusion V3 (Anime v3)',
       customUrlLabel: 'API Base URL',
       customModelLabel: '모델명 직접 입력',
       naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
@@ -65,7 +94,7 @@
       btnImportPersonas: '페르소나 파일 불러오기',
       memoryTitle: '장기 기억 노트 (메모리)',
       memoryGuideTitle: '저장 안내:',
-      memoryGuideDesc: '장기 기억은 외부 서버가 아닌 이 기기의 브라우저 내부(localStorage)에 안전하게 보관됩니다.',
+      memoryGuideDesc: '장기 기억은 외부 서버가 아닌 이 기기의 브라우저 내부(IndexedDB / Local Storage)에 안전하게 보관됩니다.',
       memoryInputPlaceholder: '캐릭터가 영구히 기억할 중요한 사건, 약속, 사실을 입력하세요',
       btnAddMemory: '기억 추가',
       memoryListLabel: '보존 중인 핵심 기억 목록:',
@@ -112,7 +141,7 @@
       btnSend: '전송',
       inputPlaceholder: '지문(*...*)과 대사("... ")를 자유롭게 입력하세요... (Enter: 전송, Shift+Enter: 줄바꿈)',
       searchPlaceholder: '대화 내용 검색... (단어 입력 시 실시간 점프)',
-      apiKeyGuide: '입력하신 API Key는 외부 서버로 전송되지 않고 이 기기의 브라우저 내부(IndexedDB)에 안전하게 보관됩니다. 브라우저 캐시 삭제 시 초기화될 수 있으니 키를 별도로 잘 보관해 두세요.',
+      apiKeyGuide: '입력하신 API Key는 제공자 API 직통 호출 시에만 사용되며, 별도의 제3자 수집 서버로 전송되지 않고 이 기기의 브라우저 내부(IndexedDB)에 안전하게 보관됩니다. 브라우저 캐시 삭제 시 초기화될 수 있으니 키를 별도로 잘 보관해 두세요.',
       symQuote: '" 대사 "',
       symAction: '* 지문 *',
       symThought: '( 속마음 )',
@@ -192,6 +221,35 @@
       btnEditSave: '수정 저장'
     },
     en: {
+      phCharPersona: 'Enter character persona, personality, tone, and traits...',
+      phCharScenario: 'Enter situation, environment, background, and scenario...',
+      titleSummarizeChat: 'Automatically compress and save recent conversation to long-term memory',
+      titleTriggerNaiArt: 'Generate NovelAI illustration for the current scene',
+      apiKeyGuideTitleFull: '🔒 Security & Storage Info:',
+      apiKeyGuideTitle: 'Security Info:',
+      btnSummarizeChat: '✨ Auto Summarize',
+      btnTriggerNaiArt: '🎨 Art',
+      phUserName: 'Your name or title',
+      phUserPersona: 'Describe your persona, appearance, tone, relationship with character...',
+      phCustomPrompt: 'e.g. Always write character thoughts inside <thought> tags.',
+      phApiKey: 'Enter your API Key',
+      phCustomBaseUrl: 'https://api.openai.com/v1',
+      phCustomModel: 'Enter model name',
+      phNaiApiKey: 'Enter NovelAI API Key',
+      m_gemini_flash_lite: 'Gemini 3.1 Flash-Lite (Default / Fast & Free)',
+      m_gemini_flash_next: 'Gemini 3.5 Flash-Lite (Next-Gen Flash)',
+      m_gemini_flash_latest: 'Gemini 3.8 Flash (Flagship)',
+      m_claude_sonnet: 'Claude 3.5 Sonnet (Flagship)',
+      m_claude_haiku: 'Claude 3.5 Haiku (Lightweight & Fast)',
+      m_deepseek_r1: 'DeepSeek R1 (Reasoning)',
+      m_deepseek_v3: 'DeepSeek V3',
+      m_gemini_25_flash: 'Gemini 2.5 Flash',
+      m_llama_33_70b: 'Llama 3.3 70B',
+      m_nai_v5_full: 'NovelAI Diffusion V5 Full (Latest Flagship)',
+      m_nai_v5_curated: 'NovelAI Diffusion V5 Curated (V5 Curated)',
+      m_nai_v4_full: 'NovelAI Diffusion V4.5 / V4 Full',
+      m_nai_v4_curated: 'NovelAI Diffusion V4.5 / V4 Curated',
+      m_nai_v3: 'NovelAI Diffusion V3 (Anime v3)',
       customUrlLabel: 'API Base URL',
       customModelLabel: 'Custom Model Name',
       naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
@@ -257,7 +315,7 @@
       btnImportPersonas: 'Import Persona File',
       memoryTitle: 'Long-Term Memory Notes',
       memoryGuideTitle: 'Storage Info:',
-      memoryGuideDesc: 'Long-term memories are safely stored locally in this device browser (localStorage).',
+      memoryGuideDesc: 'Long-term memories are safely stored locally in this device browser (IndexedDB / Local Storage).',
       memoryInputPlaceholder: 'Enter key facts, promises, or events the character should remember forever',
       btnAddMemory: 'Add Memory',
       memoryListLabel: 'Saved Key Memories:',
@@ -304,7 +362,7 @@
       btnSend: 'Send',
       inputPlaceholder: 'Type actions (*...*) and dialogues ("...") freely... (Enter: Send)',
       searchPlaceholder: 'Search chat history...',
-      apiKeyGuide: 'Your API Key is stored safely inside this browser (IndexedDB) and never sent to external servers. Clearing browser cache may reset it, so please keep a backup copy.',
+      apiKeyGuide: 'Your API Key communicates directly with the AI provider without any third-party middleman and is stored safely inside this device browser (IndexedDB). Clearing browser cache may reset it, so please keep a backup copy.',
       symQuote: '" Dialogue "',
       symAction: '* Action *',
       symThought: '( Thought )',
@@ -384,6 +442,35 @@
       btnEditSave: 'Save Edit'
     },
     ja: {
+      phCharPersona: 'キャラクターの性格、口調、特徴などを入力してください',
+      phCharScenario: '状況、場所、時間的背景などを入力してください',
+      titleSummarizeChat: '会話ログをAIが自動要約して長期記憶に保存',
+      titleTriggerNaiArt: '現在のシーンのNovelAIイラストを生成',
+      apiKeyGuideTitleFull: '🔒 セキュリティと保存情報:',
+      apiKeyGuideTitle: 'セキュリティ情報:',
+      btnSummarizeChat: '✨ AI自動要約',
+      btnTriggerNaiArt: '🎨 挿絵',
+      phUserName: 'あなたの名前または呼び名',
+      phUserPersona: 'あなたの性格、外見、口調、キャラクターとの関係などを自由に設定してください',
+      phCustomPrompt: '例: 心情描写は必ず <thought> タグ内に記述してください。',
+      phApiKey: 'APIキーを入力してください',
+      phCustomBaseUrl: 'https://api.openai.com/v1',
+      phCustomModel: 'モデル名を入力',
+      phNaiApiKey: 'NovelAI APIキーを入力',
+      m_gemini_flash_lite: 'Gemini 3.1 Flash-Lite (デフォルト / 高速・無料)',
+      m_gemini_flash_next: 'Gemini 3.5 Flash-Lite (次世代フラッシュ)',
+      m_gemini_flash_latest: 'Gemini 3.8 Flash (最新フラッグシップ)',
+      m_claude_sonnet: 'Claude 3.5 Sonnet (フラッグシップ)',
+      m_claude_haiku: 'Claude 3.5 Haiku (軽量・超高速)',
+      m_deepseek_r1: 'DeepSeek R1 (推論モデル)',
+      m_deepseek_v3: 'DeepSeek V3',
+      m_gemini_25_flash: 'Gemini 2.5 Flash',
+      m_llama_33_70b: 'Llama 3.3 70B',
+      m_nai_v5_full: 'NovelAI Diffusion V5 Full (最新フラッグシップ)',
+      m_nai_v5_curated: 'NovelAI Diffusion V5 Curated (V5 精選版)',
+      m_nai_v4_full: 'NovelAI Diffusion V4.5 / V4 Full',
+      m_nai_v4_curated: 'NovelAI Diffusion V4.5 / V4 Curated',
+      m_nai_v3: 'NovelAI Diffusion V3 (Anime v3)',
       customUrlLabel: 'API Base URL',
       customModelLabel: 'カスタムモデル名',
       naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
@@ -576,6 +663,35 @@
       btnEditSave: '修正保存'
     },
     zh: {
+      phCharPersona: '请输入角色的性格、语气、外貌特征等...',
+      phCharScenario: '请输入情境、地点、时间背景等...',
+      titleSummarizeChat: '由 AI 自动将最近对话压缩为长期记忆笔记',
+      titleTriggerNaiArt: '为当前场景生成 NovelAI 唯美插图',
+      apiKeyGuideTitleFull: '🔒 安全与存储说明:',
+      apiKeyGuideTitle: '安全说明:',
+      btnSummarizeChat: '✨ AI 自动压缩',
+      btnTriggerNaiArt: '🎨 插图',
+      phUserName: '您的姓名或称谓',
+      phUserPersona: '自由设定您的性格、外貌、口吻以及与角色的关系...',
+      phCustomPrompt: '例如：角色的内心独白请务必写在 <thought> 标签内。',
+      phApiKey: '请输入您的 API Key',
+      phCustomBaseUrl: 'https://api.openai.com/v1',
+      phCustomModel: '输入自定义模型名称',
+      phNaiApiKey: '输入 NovelAI API Key',
+      m_gemini_flash_lite: 'Gemini 3.1 Flash-Lite (默认 / 极速免费)',
+      m_gemini_flash_next: 'Gemini 3.5 Flash-Lite (次世代闪电)',
+      m_gemini_flash_latest: 'Gemini 3.8 Flash (最新旗舰)',
+      m_claude_sonnet: 'Claude 3.5 Sonnet (旗舰)',
+      m_claude_haiku: 'Claude 3.5 Haiku (轻量极速)',
+      m_deepseek_r1: 'DeepSeek R1 (推理模型)',
+      m_deepseek_v3: 'DeepSeek V3',
+      m_gemini_25_flash: 'Gemini 2.5 Flash',
+      m_llama_33_70b: 'Llama 3.3 70B',
+      m_nai_v5_full: 'NovelAI Diffusion V5 Full (最新旗舰版)',
+      m_nai_v5_curated: 'NovelAI Diffusion V5 Curated (V5 精选版)',
+      m_nai_v4_full: 'NovelAI Diffusion V4.5 / V4 Full',
+      m_nai_v4_curated: 'NovelAI Diffusion V4.5 / V4 Curated',
+      m_nai_v3: 'NovelAI Diffusion V3 (Anime v3)',
       customUrlLabel: 'API Base URL',
       customModelLabel: '自定义模型名称',
       naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
@@ -868,6 +984,7 @@
       this.chatBackupFileInput = document.getElementById('chatBackupFileInput');
       this.btnExportChatTxt = document.getElementById('btnExportChatTxt');
       this.btnClearCurrentMemory = document.getElementById('btnClearCurrentMemory');
+      this.btnSummarizeChat = document.getElementById('btnSummarizeChat');
 
       // 6. Narrative, Language & Viewer Style Elements
       this.langChips = document.querySelectorAll('#headerLangFlags .btn-flag-mini, #langChipGroup .chip-btn');
@@ -1627,30 +1744,33 @@
       if (!this.selectModel) return;
       this.selectModel.innerHTML = '';
 
+      const lang = this.engine.outputLanguage || 'ko';
+      const d = I18N_DICT[lang] || I18N_DICT.ko;
+
       let modelList = [];
       if (provider === 'gemini') {
         modelList = [
-          { value: 'gemini-3.1-flash-lite', label: 'Gemini 3.1 Flash-Lite (디폴트 / 무료 초고속)' },
-          { value: 'gemini-3.5-flash-lite', label: 'Gemini 3.5 Flash-Lite (차세대 플래시)' },
-          { value: 'gemini-3.8-flash', label: 'Gemini 3.8 Flash (최신 플래그십)' }
+          { value: 'gemini-3.1-flash-lite', label: d.m_gemini_flash_lite || 'Gemini 3.1 Flash-Lite' },
+          { value: 'gemini-3.5-flash-lite', label: d.m_gemini_flash_next || 'Gemini 3.5 Flash-Lite' },
+          { value: 'gemini-3.8-flash', label: d.m_gemini_flash_latest || 'Gemini 3.8 Flash' }
         ];
       } else if (provider === 'openrouter') {
         modelList = [
           { value: 'anthropic/claude-3.5-sonnet', label: 'Claude 3.5 Sonnet' },
-          { value: 'deepseek/deepseek-r1', label: 'DeepSeek R1 (추론형)' },
-          { value: 'deepseek/deepseek-chat', label: 'DeepSeek V3' },
-          { value: 'google/gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
-          { value: 'meta-llama/llama-3.3-70b-instruct', label: 'Llama 3.3 70B' }
+          { value: 'deepseek/deepseek-r1', label: d.m_deepseek_r1 || 'DeepSeek R1 (Reasoning)' },
+          { value: 'deepseek/deepseek-chat', label: d.m_deepseek_v3 || 'DeepSeek V3' },
+          { value: 'google/gemini-2.5-flash', label: d.m_gemini_25_flash || 'Gemini 2.5 Flash' },
+          { value: 'meta-llama/llama-3.3-70b-instruct', label: d.m_llama_33_70b || 'Llama 3.3 70B' }
         ];
       } else if (provider === 'claude') {
         modelList = [
-          { value: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet (최신 플래그십)' },
-          { value: 'claude-3-5-haiku-20241022', label: 'Claude 3.5 Haiku (초고속)' },
+          { value: 'claude-3-5-sonnet-20241022', label: d.m_claude_sonnet || 'Claude 3.5 Sonnet' },
+          { value: 'claude-3-5-haiku-20241022', label: d.m_claude_haiku || 'Claude 3.5 Haiku' },
           { value: 'claude-3-opus-20240229', label: 'Claude 3 Opus' }
         ];
       }
 
-      const savedSelectedModel = this.engine.providerModels[provider] || modelList[0]?.value;
+      const savedSelectedModel = this.engine.providerModels[provider] || (modelList[0] ? modelList[0].value : '');
       modelList.forEach(m => {
         const opt = document.createElement('option');
         opt.value = m.value;
@@ -1838,7 +1958,7 @@
         alert(this.t('errNaiArtFailed', { err: err.message }));
       } finally {
         this.btnTriggerNaiArt.disabled = false;
-        this.btnTriggerNaiArt.textContent = '🎨 삽화';
+        this.btnTriggerNaiArt.textContent = this.t('btnTriggerNaiArt') || '🎨 Art';
       }
     }
 
@@ -1961,7 +2081,7 @@
       if (chipLenStd && d.chipStandard) chipLenStd.textContent = d.chipStandard;
       const chipLenLong = document.querySelector('.chip-btn[data-length="long"]');
       if (chipLenLong && d.chipLong) chipLenLong.textContent = d.chipLong;
-      const chipLenExLong = document.querySelector('.chip-btn[data-length="extra_long"]');
+      const chipLenExLong = document.querySelector('.chip-btn[data-length="epic"]');
       if (chipLenExLong && d.chipExtraLong) chipLenExLong.textContent = d.chipExtraLong;
 
       const chipSzSm = document.querySelector('.chip-btn[data-size="small"]');
@@ -2023,6 +2143,24 @@
       const btnClear = document.querySelector('.btn-quick-symbol[data-wrap="clear"]');
       if (btnClear && d.symClear) btnClear.textContent = d.symClear;
 
+      
+      // Character Profile Placeholders
+      setAttr('editPersonaDesc', 'placeholder', d.phCharPersona);
+      setAttr('editScenarioDesc', 'placeholder', d.phCharScenario);
+
+      // Button Titles
+      setAttr('btnSummarizeChat', 'title', d.titleSummarizeChat);
+      setAttr('btnTriggerNaiArt', 'title', d.titleTriggerNaiArt);
+
+      // Security Title Full
+      setT('apiKeyGuideTitle', d.apiKeyGuideTitleFull || d.apiKeyGuideTitle);
+
+            // Memory & NAI Suffix Labels
+      setT('labelSavedMemories', d.memoryListLabel);
+      setT('naiTurnSuffixText', d.naiTurnSuffix);
+
+      // Re-render memory notes so empty state text localizes immediately
+      this.renderMemoryNotes();
       // Thought Badge & API Guide
       const thoughtBadgeEl = document.querySelector('.thought-badge');
       if (thoughtBadgeEl && d.thoughtBadge) thoughtBadgeEl.textContent = d.thoughtBadge;
@@ -2032,6 +2170,62 @@
       setAttr('userInput', 'placeholder', d.inputPlaceholder);
       setAttr('inputNewMemory', 'placeholder', d.memoryInputPlaceholder);
       setAttr('inputChatSearch', 'placeholder', d.searchPlaceholder);
+
+      
+      // Guide Headers
+      setT('memoryGuideTitle', d.memoryGuideTitle);
+      setT('memoryGuideDesc', d.memoryGuideDesc);
+      setT('apiKeyGuideTitle', d.apiKeyGuideTitle);
+
+      // Buttons
+      setT('btnSummarizeChat', d.btnSummarizeChat);
+      setT('btnTriggerNaiArt', d.btnTriggerNaiArt);
+
+      // Placeholders
+      setAttr('inputUserName', 'placeholder', d.phUserName);
+      setAttr('inputUserPersona', 'placeholder', d.phUserPersona);
+      setAttr('editCustomPrompt', 'placeholder', d.phCustomPrompt);
+      setAttr('inputApiKey', 'placeholder', d.phApiKey);
+      setAttr('inputCustomBaseUrl', 'placeholder', d.phCustomBaseUrl);
+      setAttr('inputCustomModel', 'placeholder', d.phCustomModel);
+      setAttr('inputNaiApiKey', 'placeholder', d.phNaiApiKey);
+
+      // NAI Turn Interval Suffix
+      if (this.turnIntervalDisplay) {
+        this.turnIntervalDisplay.textContent = (this.engine.naiTurnInterval || 5) + ' ' + (d.naiTurnSuffix || 'turns');
+      }
+
+      // NAI Model Select Options
+      const selNaiModel = document.getElementById('selectNaiModel');
+      if (selNaiModel) {
+        const setOpt = (val, txt) => {
+          const opt = selNaiModel.querySelector(`option[value="${val}"]`);
+          if (opt && txt) opt.textContent = txt;
+        };
+        setOpt('nai-diffusion-5-full', d.m_nai_v5_full);
+        setOpt('nai-diffusion-5-curated', d.m_nai_v5_curated);
+        setOpt('nai-diffusion-4-full', d.m_nai_v4_full);
+        setOpt('nai-diffusion-4-curated', d.m_nai_v4_curated);
+        setOpt('nai-diffusion-3', d.m_nai_v3);
+      }
+
+      // Update standard model labels in selectModel without resetting user selection or fetched models
+      if (this.selectModel) {
+        const optMap = {
+          'gemini-3.1-flash-lite': d.m_gemini_flash_lite,
+          'gemini-3.5-flash-lite': d.m_gemini_flash_next,
+          'gemini-3.8-flash': d.m_gemini_flash_latest,
+          'claude-3-5-sonnet-20241022': d.m_claude_sonnet,
+          'claude-3-5-haiku-20241022': d.m_claude_haiku,
+          'deepseek/deepseek-r1': d.m_deepseek_r1,
+          'deepseek/deepseek-chat': d.m_deepseek_v3,
+          'google/gemini-2.5-flash': d.m_gemini_25_flash,
+          'meta-llama/llama-3.3-70b-instruct': d.m_llama_33_70b
+        };
+        Array.from(this.selectModel.options).forEach(opt => {
+          if (optMap[opt.value]) opt.textContent = optMap[opt.value];
+        });
+      }
 
       if (typeof document !== 'undefined') {
         document.documentElement.lang = lang;
