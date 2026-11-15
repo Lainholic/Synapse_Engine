@@ -1,5 +1,57 @@
   const I18N_DICT = {
     ko: {
+      customUrlLabel: 'API Base URL',
+      customModelLabel: '모델명 직접 입력',
+      naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
+      ratioBalanced: '균형형 (지문 50% : 대사 50%)',
+      ratioNovel: '지문 중심 (지문 70% : 대사 30% / 서사 중심)',
+      ratioTalk: '대화 중심 (지문 30% : 대사 70% / 티키타카)',
+      naiTrigManual: '수동 생성 ([🎨 삽화] 버튼 클릭 시에만)',
+      naiTrigClimax: '클라이맥스 자동 감지 (중요 장면에 AI가 스스로 생성)',
+      naiTrigInterval: '턴 수 주기 자동 생성 (N턴마다 정기 생성)',
+      providerGemini: 'Google Gemini (공식 / 고속)',
+      providerOpenrouter: 'OpenRouter (오픈라우터)',
+      providerClaude: 'Anthropic Claude (공식 직결)',
+      providerCustom: '커스텀 (Custom API / OpenAI 호환 / Ollama)',
+      chipShort: '단문',
+      chipStandard: '표준',
+      chipLong: '장문',
+      chipExtraLong: '초장문',
+      chipSmall: '작게',
+      chipNormal: '보통',
+      chipLarge: '크게',
+      chipExtraLarge: '아주크게',
+      chipCompact: '조밀하게',
+      chipRelaxed: '넓게',
+      guideStepTitle: '🚀 3단계 초간단 시작법',
+      gStep1Head: 'API Key 입력',
+      gStep1Body: '위쪽 [AI 모델 설정]에서 Gemini 또는 OpenRouter API 키를 입력합니다. (기기 내부에만 안전 보관)',
+      gStep2Head: '캐릭터 카드 추가',
+      gStep2Body: '소장 중인 Tavern V2 카드(.png / .json)를 화면에 드래그하거나 [카드 추가]를 누릅니다.',
+      gStep3Head: '대화 시작',
+      gStep3Body: '하단 입력창에 지문(*...*)과 대사("...")를 입력하고 전송합니다.',
+      guideFeatTitle: '✨ 주요 기능 안내',
+      gFeat1Head: '소설형 지문/대사',
+      gFeat1Body: '대사는 큰따옴표(""), 지문은 별표(**)로 자동 깔끔 렌더링.',
+      gFeat2Head: '은밀한 속마음',
+      gFeat2Body: '캐릭터의 히든 속마음(<thought>)은 상단 전용 뷰어에 분리 표시.',
+      gFeat3Head: '모바일 퀵 심볼 바',
+      gFeat3Body: '키보드 위 원터치 버튼으로 따옴표, 별표, 괄호 즉시 입력.',
+      gFeat4Head: '실시간 대화 검색',
+      gFeat4Body: '상단 🔍 버튼으로 지난 명장면이나 단어로 즉시 화면 점프.',
+      gFeat5Head: '15턴 자동 요약',
+      gFeat5Body: '긴 서사도 15턴마다 AI가 3줄 압축하여 장기 기억에 누적.',
+      gFeat6Head: '대화 3대 조작',
+      gFeat6Body: '답변 재시도는 [🔄 리롤], 오타 수정은 [✏️ 수정], 분기 전환은 [↵ 재전송].',
+      guideNoticeTitle: '⚠️ 필수 주의사항 & 면책 고지',
+      gNotice1Head: '시크릿 모드 주의',
+      gNotice1Body: '시크릿 창(InPrivate)으로 접속 시 창을 닫으면 데이터가 즉시 삭제됩니다. 반드시 일반 창에서 이용하세요.',
+      gNotice2Head: '주기적 대화 백업 권장',
+      gNotice2Body: '캐시 청소 시 대화가 초기화될 수 있으므로 소중한 기록은 [대화 백업 및 내보내기]에서 JSON 파일로 저장해 두세요.',
+      gNotice3Head: 'API Key 보관',
+      gNotice3Body: '본인의 API 키는 개인 메모장에 별도 보관해 두시는 것을 권장합니다.',
+      gNotice4Head: '중립 저작 도구 EULA',
+      gNotice4Body: '본 소프트웨어는 순수 중립 롤플레이 뷰어/저작 도구이며 성인물이나 특정 서사가 번들되어 있지 않습니다. 외부 카드 및 생성물의 법적 책임은 이용자에게 있습니다.',
       charSelectTitle: '캐릭터 선택',
       btnAddCard: '카드 추가',
       userPersonaTitle: '내 페르소나 관리',
@@ -140,6 +192,58 @@
       btnEditSave: '수정 저장'
     },
     en: {
+      customUrlLabel: 'API Base URL',
+      customModelLabel: 'Custom Model Name',
+      naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
+      ratioBalanced: 'Balanced (Narrative 50% : Dialogue 50%)',
+      ratioNovel: 'Action / Prose Focused (Prose 70% : Dialogue 30%)',
+      ratioTalk: 'Dialogue Focused (Dialogue 70% : Prose 30%)',
+      naiTrigManual: 'Manual ([🎨 Generate Art] click only)',
+      naiTrigClimax: 'Auto Climax Detection (AI triggers on key scenes)',
+      naiTrigInterval: 'Fixed Turn Interval (Every N turns)',
+      providerGemini: 'Google Gemini (Official / High Speed)',
+      providerOpenrouter: 'OpenRouter (Claude, DeepSeek, Llama)',
+      providerClaude: 'Anthropic Claude (Official Direct)',
+      providerCustom: 'Custom API (OpenAI Compatible / Ollama)',
+      chipShort: 'Short',
+      chipStandard: 'Standard',
+      chipLong: 'Long',
+      chipExtraLong: 'Very Long',
+      chipSmall: 'Small',
+      chipNormal: 'Medium',
+      chipLarge: 'Large',
+      chipExtraLarge: 'Extra Large',
+      chipCompact: 'Compact',
+      chipRelaxed: 'Relaxed',
+      guideStepTitle: '🚀 3-Step Quick Start',
+      gStep1Head: 'Enter API Key',
+      gStep1Body: 'Open [AI Model Settings] above and enter your Gemini or OpenRouter API Key. (Safely stored on device only)',
+      gStep2Head: 'Add Character Card',
+      gStep2Body: 'Drag and drop any Tavern V2 character card (.png / .json) or click [Add Card].',
+      gStep3Head: 'Start Roleplaying',
+      gStep3Body: 'Type actions (*...*) and dialogue ("...") in the bottom chat input and hit send.',
+      guideFeatTitle: '✨ Key Features',
+      gFeat1Head: 'Novelistic Prose & Dialogue',
+      gFeat1Body: 'Dialogue in quotes ("") and actions in asterisks (**) render in clean novel format.',
+      gFeat2Head: 'Hidden Inner Thoughts',
+      gFeat2Body: 'Hidden character thoughts (<thought>) are separated into the top header badge.',
+      gFeat3Head: 'Mobile Quick Symbol Toolbar',
+      gFeat3Body: 'One-touch buttons above the keyboard for instant quotes, asterisks, and brackets.',
+      gFeat4Head: 'Real-time Chat Search',
+      gFeat4Body: 'Click the top 🔍 icon to search past scenes and jump directly to them.',
+      gFeat5Head: 'Rolling 15-Turn Auto-Summary',
+      gFeat5Body: 'Past narrative is compressed every 15 turns into long-term memory notes.',
+      gFeat6Head: 'Message Controls',
+      gFeat6Body: 'Reroll response with [🔄 Reroll], inline edit with [✏️ Edit], branch story with [↵ Resend].',
+      guideNoticeTitle: '⚠️ Precautions & Disclaimer',
+      gNotice1Head: 'Incognito Mode Warning',
+      gNotice1Body: 'Browser IndexedDB is cleared when closing Private/Incognito windows. Please use normal tabs.',
+      gNotice2Head: 'Regular Chat Backup',
+      gNotice2Body: 'Browser cache clears can reset data. Export JSON backups regularly in [Chat Backup & Export].',
+      gNotice3Head: 'API Key Security',
+      gNotice3Body: 'Keep your API keys safely backed up in your personal notes.',
+      gNotice4Head: 'Neutral Tool EULA',
+      gNotice4Body: 'This software is a 100% neutral roleplay container with zero bundled NSFW content. Users bear full legal responsibility for external cards and LLM outputs.',
       charSelectTitle: 'Character Selection',
       btnAddCard: 'Add Card',
       userPersonaTitle: 'User Persona Manager',
@@ -280,6 +384,58 @@
       btnEditSave: 'Save Edit'
     },
     ja: {
+      customUrlLabel: 'API Base URL',
+      customModelLabel: 'カスタムモデル名',
+      naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
+      ratioBalanced: 'バランス型 (地の文 50% : セリフ 50%)',
+      ratioNovel: '地の文重視 (地の文 70% : セリフ 30%)',
+      ratioTalk: '会話重視 (セリフ 70% : 地の文 30%)',
+      naiTrigManual: '手動生成 ([🎨 挿絵] クリック時のみ)',
+      naiTrigClimax: 'クライマックス自動検知 (重要場面でAIが自動生成)',
+      naiTrigInterval: 'ターン周期自動生成 (Nターン毎に定期生成)',
+      providerGemini: 'Google Gemini (公式 / 高速)',
+      providerOpenrouter: 'OpenRouter (Claude, DeepSeek, Llama)',
+      providerClaude: 'Anthropic Claude (公式直接接続)',
+      providerCustom: 'カスタム (OpenAI互換 / Ollama)',
+      chipShort: '短文',
+      chipStandard: '標準',
+      chipLong: '長文',
+      chipExtraLong: '超長文',
+      chipSmall: '小',
+      chipNormal: '中',
+      chipLarge: '大',
+      chipExtraLarge: '特大',
+      chipCompact: '狭い',
+      chipRelaxed: '広い',
+      guideStepTitle: '🚀 3ステップ簡単スタート',
+      gStep1Head: 'APIキーの入力',
+      gStep1Body: '上部の [AIモデル設定] でGeminiまたはOpenRouterのAPIキーを入力します (端末内にのみ安全に保存)。',
+      gStep2Head: 'キャラクターカード追加',
+      gStep2Body: 'お持ちのTavern V2規格カード (.png / .json) を画面にドロップするか [カード追加] をクリックします。',
+      gStep3Head: 'ロールプレイ開始',
+      gStep3Body: '下部の入力欄に地の文 (*...*) とセリフ ("...") を入力して送信します。',
+      guideFeatTitle: '✨ 主な機能',
+      gFeat1Head: '小説風レンダリング',
+      gFeat1Body: 'セリフはカギ括弧・二重引用符、地の文はアスタリスクで情緒豊かに整形表示。',
+      gFeat2Head: '秘めた本音 (<thought>)',
+      gFeat2Body: 'キャラクターの隠された心理描写は上部専用ビューアに分離表示。',
+      gFeat3Head: 'モバイル特化クイックバー',
+      gFeat3Body: 'キーボード上部のワンタッチボタンで記号を瞬時に入力可能。',
+      gFeat4Head: 'リアルタイム全文検索',
+      gFeat4Body: '上部の 🔍 ボタンで過去の会話ログを瞬時に検索・ジャンプ。',
+      gFeat5Head: '15ターン自動要約',
+      gFeat5Body: '長いストーリーも15ターンごとにAIが要約し長期記憶に保存。',
+      gFeat6Head: 'メッセージ3大操作',
+      gFeat6Body: 'リロール [🔄]、修正 [✏️]、分岐やり直し [↵] にワンクリック対応。',
+      guideNoticeTitle: '⚠️ 注意事項と免責事項',
+      gNotice1Head: 'シークレットモード注意',
+      gNotice1Body: 'プライベートブラウズではタブ終了時にデータが消去されます。通常タブをご利用ください。',
+      gNotice2Head: '定期的なバックアップ推奨',
+      gNotice2Body: 'キャッシュ消去に備え、[会話バックアップ] から定期的にJSON保存を行ってください。',
+      gNotice3Head: 'APIキーの保管',
+      gNotice3Body: 'ご自身のAPIキーはお手元のメモ帳等にも控えておくことをお勧めします。',
+      gNotice4Head: '中立的ツール規約',
+      gNotice4Body: '本アプリは完全中立な閲覧エンジンであり、成人向けコンテンツ等は一切バンドルされていません。',
       charSelectTitle: 'キャラクター選択',
       btnAddCard: 'カード追加',
       userPersonaTitle: 'ペルソナ管理',
@@ -420,6 +576,58 @@
       btnEditSave: '修正保存'
     },
     zh: {
+      customUrlLabel: 'API Base URL',
+      customModelLabel: '自定义模型名称',
+      naiApiKeyLabel: 'NovelAI API Key (Persistent Key)',
+      ratioBalanced: '平衡型 (旁白 50% : 对话 50%)',
+      ratioNovel: '旁白描写侧重 (旁白 70% : 对话 30%)',
+      ratioTalk: '对话侧重 (对话 70% : 旁白 30%)',
+      naiTrigManual: '手动生成 (仅点击 [🎨 生成插图] 时)',
+      naiTrigClimax: '高潮自动检测 (AI在关键场景自动触发)',
+      naiTrigInterval: '固定轮次自动生成 (每N轮定期生成)',
+      providerGemini: 'Google Gemini (官方 / 高速)',
+      providerOpenrouter: 'OpenRouter (Claude, DeepSeek, Llama)',
+      providerClaude: 'Anthropic Claude (官方直连)',
+      providerCustom: '自定义 API (兼容 OpenAI / Ollama)',
+      chipShort: '短篇',
+      chipStandard: '标准',
+      chipLong: '长篇',
+      chipExtraLong: '超长篇',
+      chipSmall: '小',
+      chipNormal: '中',
+      chipLarge: '大',
+      chipExtraLarge: '特大',
+      chipCompact: '紧凑',
+      chipRelaxed: '宽松',
+      guideStepTitle: '🚀 3步极简入门',
+      gStep1Head: '输入 API Key',
+      gStep1Body: '在上方 [AI 模型设置] 中输入您的 Gemini 或 OpenRouter API Key (仅安全保存在本设备浏览器中)。',
+      gStep2Head: '添加角色卡片',
+      gStep2Body: '拖拽您的 Tavern V2 角色卡片 (.png / .json) 到页面中，或点击 [添加卡片]。',
+      gStep3Head: '开始角色扮演',
+      gStep3Body: '在底部输入框中输入动作描写 (*...*) 与对话 ("...") 并发送。',
+      guideFeatTitle: '✨ 核心特色功能',
+      gFeat1Head: '小说式旁白与对话',
+      gFeat1Body: '对话加引号，旁白加星号，自动排版为沉浸式小说体裁。',
+      gFeat2Head: '隐秘心声分离 (<thought>)',
+      gFeat2Body: '角色的内心真实想法与心理活动独立显示在顶部徽章专区。',
+      gFeat3Head: '移动端快速符号栏',
+      gFeat3Body: '键盘上方一键输入引号、星号与括号，手机打字行云流水。',
+      gFeat4Head: '实时对话全文搜索',
+      gFeat4Body: '点击顶部 🔍 图标即可快速搜索往期精彩瞬间并直达。',
+      gFeat5Head: '15轮后台自动压缩',
+      gFeat5Body: '长篇大作每15轮自动提炼精髓并永久存入长期记忆笔记。',
+      gFeat6Head: '消息自由掌控',
+      gFeat6Body: '支持一键 [🔄 重抽]、[✏️ 编辑] 任意轮次与 [↵ 重新分支]。',
+      guideNoticeTitle: '⚠️ 注意事项与免责声明',
+      gNotice1Head: '无痕浏览模式警告',
+      gNotice1Body: '使用无痕/隐身窗口浏览时关闭页面数据即刻清空，请务必在常规窗口中使用。',
+      gNotice2Head: '建议定期备份对话',
+      gNotice2Body: '清理浏览器缓存可能导致数据重置，请在 [对话备份与导出] 中定期下载 JSON 文件。',
+      gNotice3Head: '妥善保管 API Key',
+      gNotice3Body: '建议在个人记事本中妥善备份您的个人 API Key。',
+      gNotice4Head: '中立创作工具 EULA',
+      gNotice4Body: '本工具为纯中立角色扮演容器，未捆绑任何成人内容，使用者对外部卡片及生成内容负全部法律责任。',
       charSelectTitle: '选择角色',
       btnAddCard: '添加卡片',
       userPersonaTitle: '用户人设管理',
@@ -1690,6 +1898,121 @@
       setT('btnResetChat', d.btnReset);
       setT('btnSend', d.btnSend);
 
+      // Detailed Form Labels
+      setT('labelUserPersonaSlot', d.slotLabel);
+      setT('labelUserName', d.userNameLabel);
+      setT('labelUserPersonaDesc', d.userPersonaLabel);
+      setT('labelCustomPrompt', d.customPromptLabel);
+      setT('labelProvider', d.providerLabel);
+      setT('labelCustomBaseUrl', d.customUrlLabel);
+      setT('labelApiKey', d.apiKeyLabel);
+      setT('labelModel', d.modelLabel);
+      setT('labelCustomModel', d.customModelLabel);
+      setT('labelNaiToggle', d.naiToggleLabel);
+      setT('labelNaiApiKey', d.naiApiKeyLabel);
+      setT('labelNaiTriggerMode', d.naiTriggerLabel);
+      setT('labelNaiTurnInterval', d.naiIntervalLabel);
+      setT('labelNaiModel', d.naiModelLabel);
+      setT('labelNaiPositive', d.naiPositiveLabel);
+      setT('labelNaiNegative', d.naiNegativeLabel);
+      setT('labelProseLength', d.lengthLabel);
+      setT('labelNarrativeStyle', d.ratioLabel);
+      setT('labelTemperature', d.tempLabel);
+      setT('labelFontSize', d.fontSizeLabel);
+      setT('labelLineHeight', d.lineHeightLabel);
+
+      // Select Dropdown Options
+      const selRatio = document.getElementById('selectNarrativeStyle');
+      if (selRatio) {
+        const optBal = selRatio.querySelector('option[value="balanced"]');
+        if (optBal && d.ratioBalanced) optBal.textContent = d.ratioBalanced;
+        const optNov = selRatio.querySelector('option[value="novel"]');
+        if (optNov && d.ratioNovel) optNov.textContent = d.ratioNovel;
+        const optTalk = selRatio.querySelector('option[value="talk"]');
+        if (optTalk && d.ratioTalk) optTalk.textContent = d.ratioTalk;
+      }
+
+      const selProv = document.getElementById('selectProvider');
+      if (selProv) {
+        const optGem = selProv.querySelector('option[value="gemini"]');
+        if (optGem && d.providerGemini) optGem.textContent = d.providerGemini;
+        const optOr = selProv.querySelector('option[value="openrouter"]');
+        if (optOr && d.providerOpenrouter) optOr.textContent = d.providerOpenrouter;
+        const optCl = selProv.querySelector('option[value="claude"]');
+        if (optCl && d.providerClaude) optCl.textContent = d.providerClaude;
+        const optCus = selProv.querySelector('option[value="custom"]');
+        if (optCus && d.providerCustom) optCus.textContent = d.providerCustom;
+      }
+
+      const selNaiTrig = document.getElementById('selectNaiTriggerMode');
+      if (selNaiTrig) {
+        const optMan = selNaiTrig.querySelector('option[value="manual"]');
+        if (optMan && d.naiTrigManual) optMan.textContent = d.naiTrigManual;
+        const optClim = selNaiTrig.querySelector('option[value="auto_climax"]');
+        if (optClim && d.naiTrigClimax) optClim.textContent = d.naiTrigClimax;
+        const optInt = selNaiTrig.querySelector('option[value="turn_interval"]');
+        if (optInt && d.naiTrigInterval) optInt.textContent = d.naiTrigInterval;
+      }
+
+      // Chips
+      const chipLenShort = document.querySelector('.chip-btn[data-length="short"]');
+      if (chipLenShort && d.chipShort) chipLenShort.textContent = d.chipShort;
+      const chipLenStd = document.querySelector('.chip-btn[data-length="standard"]');
+      if (chipLenStd && d.chipStandard) chipLenStd.textContent = d.chipStandard;
+      const chipLenLong = document.querySelector('.chip-btn[data-length="long"]');
+      if (chipLenLong && d.chipLong) chipLenLong.textContent = d.chipLong;
+      const chipLenExLong = document.querySelector('.chip-btn[data-length="extra_long"]');
+      if (chipLenExLong && d.chipExtraLong) chipLenExLong.textContent = d.chipExtraLong;
+
+      const chipSzSm = document.querySelector('.chip-btn[data-size="small"]');
+      if (chipSzSm && d.chipSmall) chipSzSm.textContent = d.chipSmall;
+      const chipSzMed = document.querySelector('.chip-btn[data-size="medium"]');
+      if (chipSzMed && d.chipNormal) chipSzMed.textContent = d.chipNormal;
+      const chipSzLg = document.querySelector('.chip-btn[data-size="large"]');
+      if (chipSzLg && d.chipLarge) chipSzLg.textContent = d.chipLarge;
+      const chipSzExLg = document.querySelector('.chip-btn[data-size="xlarge"]');
+      if (chipSzExLg && d.chipExtraLarge) chipSzExLg.textContent = d.chipExtraLarge;
+
+      const chipLhComp = document.querySelector('.chip-btn[data-lh="compact"]');
+      if (chipLhComp && d.chipCompact) chipLhComp.textContent = d.chipCompact;
+      const chipLhNorm = document.querySelector('.chip-btn[data-lh="normal"]');
+      if (chipLhNorm && d.chipStandard) chipLhNorm.textContent = d.chipStandard;
+      const chipLhRel = document.querySelector('.chip-btn[data-lh="relaxed"]');
+      if (chipLhRel && d.chipRelaxed) chipLhRel.textContent = d.chipRelaxed;
+
+      // Guide Section Elements
+      setT('guideStepTitle', d.guideStepTitle);
+      setT('gStep1Head', d.gStep1Head);
+      setT('gStep1Body', d.gStep1Body);
+      setT('gStep2Head', d.gStep2Head);
+      setT('gStep2Body', d.gStep2Body);
+      setT('gStep3Head', d.gStep3Head);
+      setT('gStep3Body', d.gStep3Body);
+
+      setT('guideFeatTitle', d.guideFeatTitle);
+      setT('gFeat1Head', d.gFeat1Head);
+      setT('gFeat1Body', d.gFeat1Body);
+      setT('gFeat2Head', d.gFeat2Head);
+      setT('gFeat2Body', d.gFeat2Body);
+      setT('gFeat3Head', d.gFeat3Head);
+      setT('gFeat3Body', d.gFeat3Body);
+      setT('gFeat4Head', d.gFeat4Head);
+      setT('gFeat4Body', d.gFeat4Body);
+      setT('gFeat5Head', d.gFeat5Head);
+      setT('gFeat5Body', d.gFeat5Body);
+      setT('gFeat6Head', d.gFeat6Head);
+      setT('gFeat6Body', d.gFeat6Body);
+
+      setT('guideNoticeTitle', d.guideNoticeTitle);
+      setT('gNotice1Head', d.gNotice1Head);
+      setT('gNotice1Body', d.gNotice1Body);
+      setT('gNotice2Head', d.gNotice2Head);
+      setT('gNotice2Body', d.gNotice2Body);
+      setT('gNotice3Head', d.gNotice3Head);
+      setT('gNotice3Body', d.gNotice3Body);
+      setT('gNotice4Head', d.gNotice4Head);
+      setT('gNotice4Body', d.gNotice4Body);
+
       // Quick Symbol Toolbar Buttons
       const btnQuote = document.querySelector('.btn-quick-symbol[data-wrap="quote"]');
       if (btnQuote && d.symQuote) btnQuote.textContent = d.symQuote;
@@ -1715,7 +2038,6 @@
       }
       this.updateCharacterUI();
     }
-
 
     loadSettingsToUI() {
       this.renderUserPersonaSelector();
